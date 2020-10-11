@@ -1,3 +1,4 @@
 .idea
 *__pycache__
 java_model/
+venv/
