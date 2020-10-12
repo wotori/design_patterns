@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from factory.abstract_factory import AbstractFactory
-from factory.enum.bodytype import BodyType
-from factory.cars.lada import Lada
+from python_model.factory.factory_interface.abstract_factory import AbstractFactory
+from python_model.factory.factory_interface.enum.bodytype import BodyType
+from python_model.factory.factory_interface.cars.lada import Lada
 
 
 class LadaFactory(AbstractFactory):

@@ -1,11 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from factory.abstract_factory import AbstractFactory
-from factory.enum.bodytype import BodyType
-from factory.cars.vaz import Vaz
+from python_model.factory.factory_interface.abstract_factory import AbstractFactory
+from python_model.factory.factory_interface.enum.bodytype import BodyType
+from python_model.factory.factory_interface.cars.audi import Audi
 
-class VazFactory(AbstractFactory):
+
+class AudiFactory(AbstractFactory):
 
     @classmethod
     def create_body(cls):
@@ -13,15 +14,15 @@ class VazFactory(AbstractFactory):
 
     @classmethod
     def create_engine(cls):
-        return 'v2.5'
+        return 'v5.0'
 
     @classmethod
     def create_interior(cls):
-        return 'raw_silver_metall'
+        return 'black_skin'
 
     @classmethod
     def create_car(cls):
         body = cls.create_body()
         engine = cls.create_engine()
         interior = cls.create_interior()
-        return Vaz(body, engine, interior)
+        return Audi(body, engine, interior)

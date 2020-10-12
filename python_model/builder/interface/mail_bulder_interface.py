@@ -3,13 +3,13 @@ from abc import ABC, abstractmethod, abstractproperty
 from typing import Any
 
 
-class EmailBuilder(ABC):
+class EmailBuilderInterface(ABC):
     """
     Интерфейс строителя.
     Объявляет создающие методы для различных частей объектов почтового сообщения.
     """
 
-    @abstractproperty
+    @property
     def mail(self) -> None:
         pass
 
