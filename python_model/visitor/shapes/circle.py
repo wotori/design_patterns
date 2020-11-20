@@ -8,7 +8,7 @@ class Circle(Component):
     """
 
     def accept(self, visitor: Visitor):
-        visitor.create_circle(self)
+        visitor.create_circle()
 
-    def create_circle(self) -> str:
-        return "Circle"
+    def create_circle(self):
+        self.circle = "Circle"

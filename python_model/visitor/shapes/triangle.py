@@ -1,4 +1,5 @@
 from python_model.visitor.component import Component
+from python_model.visitor.visitor import Visitor
 
 
 class Triangle(Component):
@@ -6,8 +7,8 @@ class Triangle(Component):
     То же самое здесь: visitConcreteComponentB => Triangle
     """
 
-    def accept(self, visitor):
+    def accept(self, visitor: Visitor):
         visitor.create_triangle(self)
 
-    def create_triangle(self) -> str:
-        return "Triangle"
+    def create_triangle(self):
+        self.triangle = "Triangle"

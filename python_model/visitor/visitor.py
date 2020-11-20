@@ -1,4 +1,5 @@
-from abc import ABC, abstractmethod
+from abc import ABC
+
 
 class Visitor(ABC):
     """
@@ -7,17 +8,14 @@ class Visitor(ABC):
     определить конкретный класс компонента, с которым он имеет дело.
     """
 
-    @abstractmethod
     def create_rectangle(self, element) -> None:
-        pass
+        self.rectangle = "rectangle"
 
-    @abstractmethod
     def create_triangle(self, element) -> None:
-        pass
+        self.triangle = "triangle"
 
-    @abstractmethod
-    def create_circle(self, element) -> None:
-        pass
+    def create_circle(self):
+        self.circle = "Circle"
 
 
 """
@@ -30,14 +28,14 @@ class Visitor(ABC):
 методов посетителя над различными объектами структуры.
 """
 
-# class ConcreteVisitor1(Visitor):
-#     def visit_concrete_component_a(self, element) -> None:
-#         print(f"{element.exclusive_method_of_concrete_component_a()} + ConcreteVisitor1")
-#
-#     def visit_concrete_component_b(self, element) -> None:
-#         print(f"{element.special_method_of_concrete_component_b()} + ConcreteVisitor1")
-#
-#
+
+class ConcreteVisitor1(Visitor):
+    def visit_concrete_component_a(self, element) -> None:
+        print(f"{element.exclusive_method_of_concrete_component_a()} + ConcreteVisitor1")
+
+    def visit_concrete_component_b(self, element) -> None:
+        print(f"{element.special_method_of_concrete_component_b()} + ConcreteVisitor1")
+
 # class ConcreteVisitor2(Visitor):
 #     def visit_concrete_component_a(self, element) -> None:
 #         print(f"{element.exclusive_method_of_concrete_component_a()} + ConcreteVisitor2")

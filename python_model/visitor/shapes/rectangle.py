@@ -16,11 +16,10 @@ class Rectangle(Component):
 
         visitor.create_rectangle(self)
 
-    def create_rectangle(self) -> str:
+    def create_rectangle(self):
         """
         Конкретные Компоненты могут иметь особые методы, не объявленные в их
         базовом классе или интерфейсе. Посетитель всё же может использовать эти
         методы, поскольку он знает о конкретном классе компонента.
         """
-
-        return "Rectangle"
+        self.circle = "Circle"
