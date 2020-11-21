@@ -1,30 +1,5 @@
+from __future__ import annotations
 from abc import ABC, abstractmethod
-from contextvars import Context
-
-
-class State(ABC):
-    """
-    Базовый класс Состояния объявляет методы, которые должны реализовать все
-    Конкретные Состояния, а также предоставляет обратную ссылку на объект
-    Контекст, связанный с Состоянием. Эта обратная ссылка может использоваться
-    Состояниями для передачи Контекста другому Состоянию.
-    """
-
-    @property
-    def context(self) -> Context:
-        return self._context
-
-    @context.setter
-    def context(self, context: Context) -> None:
-        self._context = context
-
-    @abstractmethod
-    def handle1(self) -> None:
-        pass
-
-    @abstractmethod
-    def handle2(self) -> None:
-        pass
 
 
 class Context:
@@ -62,6 +37,31 @@ class Context:
         self._state.handle2()
 
 
+class State(ABC):
+    """
+    Базовый класс Состояния объявляет методы, которые должны реализовать все
+    Конкретные Состояния, а также предоставляет обратную ссылку на объект
+    Контекст, связанный с Состоянием. Эта обратная ссылка может использоваться
+    Состояниями для передачи Контекста другому Состоянию.
+    """
+
+    @property
+    def context(self) -> Context:
+        return self._context
+
+    @context.setter
+    def context(self, context: Context) -> None:
+        self._context = context
+
+    @abstractmethod
+    def handle1(self) -> None:
+        pass
+
+    @abstractmethod
+    def handle2(self) -> None:
+        pass
+
+
 """
 Конкретные Состояния реализуют различные модели поведения, связанные с
 состоянием Контекста.
@@ -70,8 +70,7 @@ class Context:
 
 class StatePrintFromUSB(State):
     def handle1(self) -> None:
-        print("ConcreteStateA handles request1.")
-        print("ConcreteStateA wants to change the state of the context.")
+        print("Смена состояния на: StatePrintFromWiFi")
         self.context.transition_to(StatePrintFromWiFi())
 
     def handle2(self) -> None:
@@ -83,6 +82,14 @@ class StatePrintFromWiFi(State):
         print("ConcreteStateB handles request1.")
 
     def handle2(self) -> None:
-        print("ConcreteStateB handles request2.")
-        print("ConcreteStateB wants to change the state of the context.")
+        print("Смена состояния на: StatePrintFromUSB")
         self.context.transition_to(StatePrintFromUSB())
+
+class StatePickDoc(State):
+    pass
+
+class StatePrintDoc(State):
+    pass
+
+class StateReturnCashe(State):
+    pass
