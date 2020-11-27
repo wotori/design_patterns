@@ -1,4 +1,7 @@
 from abc import ABC
+from random import randint
+
+from python_model.visitor.shapes.rectangle import Rectangle
 
 
 class Visitor(ABC):
@@ -9,7 +12,7 @@ class Visitor(ABC):
     """
 
     def create_rectangle(self, element) -> None:
-        self.rectangle = "rectangle"
+        self.rectangle = Rectangle()
 
     def create_triangle(self, element) -> None:
         self.triangle = "triangle"
@@ -18,27 +21,9 @@ class Visitor(ABC):
         self.circle = "Circle"
 
 
-"""
-Конкретные Посетители реализуют несколько версий одного и того же алгоритма,
-которые могут работать со всеми классами конкретных компонентов.
-
-Максимальную выгоду от паттерна Посетитель вы почувствуете, используя его со
-сложной структурой объектов, такой как дерево Компоновщика. В этом случае было
-бы полезно хранить некоторое промежуточное состояние алгоритма при выполнении
-методов посетителя над различными объектами структуры.
-"""
-
-
 class ConcreteVisitor1(Visitor):
     def visit_concrete_component_a(self, element) -> None:
         print(f"{element.exclusive_method_of_concrete_component_a()} + ConcreteVisitor1")
 
     def visit_concrete_component_b(self, element) -> None:
         print(f"{element.special_method_of_concrete_component_b()} + ConcreteVisitor1")
-
-# class ConcreteVisitor2(Visitor):
-#     def visit_concrete_component_a(self, element) -> None:
-#         print(f"{element.exclusive_method_of_concrete_component_a()} + ConcreteVisitor2")
-#
-#     def visit_concrete_component_b(self, element) -> None:
-#         print(f"{element.special_method_of_concrete_component_b()} + ConcreteVisitor2")

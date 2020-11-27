@@ -1,4 +1,5 @@
 from python_model.visitor.component import Component
+from random import randint
 
 
 class Rectangle(Component):
@@ -8,18 +9,16 @@ class Rectangle(Component):
     """
 
     def accept(self, visitor) -> None:
-        """
-        Мы вызываем Rectangle, что
-        соответствует названию текущего класса. Таким образом мы позволяем
-        посетителю узнать, с каким классом компонента он работает.
-        """
-
         visitor.create_rectangle(self)
+        visitor.rectangle.draw()
+        visitor.rectangle.getPerimetr()
+        visitor.rectangle.getArea()
 
-    def create_rectangle(self):
-        """
-        Конкретные Компоненты могут иметь особые методы, не объявленные в их
-        базовом классе или интерфейсе. Посетитель всё же может использовать эти
-        методы, поскольку он знает о конкретном классе компонента.
-        """
-        self.circle = "Circle"
+    def draw(self):
+        self.rectangle_scale = {"x": randint(1, 100), "y": randint(1, 100)}
+
+    def getPerimetr(self):
+        self.rectangle_perimetr = (self.rectangle_scale["x"] + self.rectangle_scale["y"]) * 2
+
+    def getArea(self):
+        self.rectangle_area = (self.rectangle_scale["x"] + self.rectangle_scale["y"]) ** 2
