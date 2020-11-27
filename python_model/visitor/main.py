@@ -7,10 +7,12 @@ from python_model.visitor.visitor import ConcreteVisitor1
 if __name__ == "__main__":
     components = [Circle(), Rectangle(), Triangle()]
 
-    print("Клиентский код работает со всеми посетителями через базовый интерфейс посетителей:")
+    print("Создаём посетителя.")
     visitor1 = ConcreteVisitor1()
+    print("Клиентский код, работа посетителя:")
     client_code(components, visitor1)
 
+    print("\nВывод информации о параметрах прямоугольника:")
     print("Размер прямоугольника: ", visitor1.rectangle.rectangle_scale)
     print("Периметр прямоугольника: ", visitor1.rectangle.rectangle_perimetr)
     print("Площадь прямоугольника: ", visitor1.rectangle.rectangle_area)

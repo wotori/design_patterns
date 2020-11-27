@@ -8,6 +8,7 @@ class Triangle(Component):
     """
 
     def accept(self, visitor: Visitor):
+        print("программа создаёт триугольник...")
         visitor.create_triangle(self)
 
     def create_triangle(self):

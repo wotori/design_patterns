@@ -9,6 +9,7 @@ class Rectangle(Component):
     """
 
     def accept(self, visitor) -> None:
+        print("программа создаёт прямоугольник...")
         visitor.create_rectangle(self)
         visitor.rectangle.draw()
         visitor.rectangle.getPerimetr()
