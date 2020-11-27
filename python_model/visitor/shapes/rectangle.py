@@ -22,4 +22,4 @@ class Rectangle(Component):
         self.rectangle_perimetr = (self.rectangle_scale["x"] + self.rectangle_scale["y"]) * 2
 
     def getArea(self):
-        self.rectangle_area = (self.rectangle_scale["x"] + self.rectangle_scale["y"]) ** 2
+        self.rectangle_area = self.rectangle_scale["x"] * self.rectangle_scale["y"]
